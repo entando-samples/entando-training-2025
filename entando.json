@@ -1,0 +1,9 @@
+{
+    "microservices": [],
+    "microfrontends": [],
+    "svc": [],
+    "name": "expense-bundle",
+    "version": "0.0.1",
+    "description": "expense-bundle description",
+    "type": "bundle"
+}
