@@ -1,0 +1,20 @@
+server:
+  port: 8181
+
+  security:
+    application:
+      name: springboot-keycloak
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI:http://localhost:8081/auth/realms/entando-development}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resource-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID:entando-core}
+      principal-attribute: preferred_username
+
+app:
+  allowed-api-origin: "*"
