@@ -4,6 +4,7 @@ package com.entando.springbootexpense.controller;
 import com.entando.springbootexpense.model.entity.ExpenseStatus;
 import com.entando.springbootexpense.model.record.ExpenseRecord;
 import com.entando.springbootexpense.service.ExpenseService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +29,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/expenses")
+@RequestMapping("/api")
 public class ExpenseController {
 
     private final Logger log = LoggerFactory.getLogger(ExpenseController.class);
@@ -38,7 +40,7 @@ public class ExpenseController {
         this.expenseService = expenseService;
     }
 
-    @GetMapping
+    @GetMapping("/expenses")
     public ResponseEntity<List<ExpenseRecord>> getAllExpenses(@ParameterObject Pageable pageable) {
         log.debug("REST request to get all Expenses");
 
@@ -50,7 +52,7 @@ public class ExpenseController {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/expenses/{id}")
     public ResponseEntity<ExpenseRecord> getExpense(@PathVariable Long id) {
         log.debug("REST request to get the expense with id {}", id);
 
@@ -61,9 +63,9 @@ public class ExpenseController {
     }
 
 
-    @PostMapping
-//    @PreAuthorize("hasRole('admin')")
-//    @SecurityRequirement(name = "expense_auth")
+    @PostMapping("/expenses")
+    @PreAuthorize("hasAuthority('expense-admin')")
+    @SecurityRequirement(name = "expense-admin")
     public ResponseEntity<ExpenseRecord> createExpense(@RequestBody ExpenseRecord expense) throws URISyntaxException {
         log.debug("REST request to create a NEW expense: {}", expense);
 
@@ -74,9 +76,9 @@ public class ExpenseController {
                 .body(created);
     }
 
-    @PatchMapping("/{id}/{status}")
-//    @PreAuthorize("hasRole('admin')")
-//    @SecurityRequirement(name = "expense_auth")
+    @PatchMapping("/expenses/{id}/{status}")
+    @PreAuthorize("hasAuthority('expense-admin')")
+    @SecurityRequirement(name = "expense-admin")
     public ResponseEntity<ExpenseRecord> updateStatus(@PathVariable Long id, @PathVariable ExpenseStatus status) {
         log.debug("REST request to update expense: {} status to {}", id, status);
 

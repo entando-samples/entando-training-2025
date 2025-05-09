@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    public static final String AGENDA_BUNDLE_API = "/api/**";
+    public static final String EXPENSE_BUNDLE_API = "/api/expences/**";
     public final JwtAuthConverter jwtAuthConverter;
 
     public SecurityConfiguration(JwtAuthConverter jwtAuthConverter) {
@@ -28,11 +28,9 @@ public class SecurityConfiguration {
         return http
                 .csrf(csrf -> csrf.disable()) //NOSONAR
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers(HttpMethod.OPTIONS, AGENDA_BUNDLE_API).permitAll()
-                        .requestMatchers(HttpMethod.GET, AGENDA_BUNDLE_API).permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/expenses").permitAll()
-                        .requestMatchers(HttpMethod.PATCH, "/api/expenses/**").permitAll()
-                        .requestMatchers(AGENDA_BUNDLE_API).authenticated()
+                        .requestMatchers(HttpMethod.OPTIONS, EXPENSE_BUNDLE_API).permitAll()
+                        .requestMatchers(HttpMethod.GET, EXPENSE_BUNDLE_API).permitAll()
+                        .requestMatchers(EXPENSE_BUNDLE_API).authenticated()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
@@ -45,4 +43,6 @@ public class SecurityConfiguration {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
+
+
 }
