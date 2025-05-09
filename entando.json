@@ -1,7 +1,25 @@
 {
-    "microservices": [],
+    "microservices": [
+        {
+            "name": "expense-management",
+            "stack": "spring-boot",
+             "healthCheckPath": "/actuator/health",
+            "dbms": "postgresql",
+            "commands": {
+                "run": "mvn spring-boot:run -Dspring-boot.run.profiles=dev",
+                "build": "mvn verify --no-transfer-progress"
+            },
+            "roles": [
+                "expense-admin",
+                "expense-user"
+            ]
+        }
+    ],
     "microfrontends": [],
-    "svc": [],
+    "svc": [
+        "expense-postgresql",
+        "expense-keycloak"
+    ],
     "name": "expense-bundle",
     "version": "0.0.1",
     "description": "expense-bundle description",

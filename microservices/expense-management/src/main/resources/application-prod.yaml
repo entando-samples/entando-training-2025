@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/expense-db}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+
+# Hub UI url for bundle groups
+#HUB_GROUP_DETAIL_BASE_URL:
