@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    public static final String EXPENSE_BUNDLE_API = "/api/expences/**";
+    public static final String EXPENSE_BUNDLE_API = "/api/expenses/**";
     public final JwtAuthConverter jwtAuthConverter;
 
     public SecurityConfiguration(JwtAuthConverter jwtAuthConverter) {
