@@ -20,6 +20,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
+    public static final String ROLE_PREFIX = ""; // "ROLE_"; // this is the keycloak default
+
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
     private final JwtAuthConverterProperties properties;
@@ -63,7 +65,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
             return Set.of();
         }
         return resourceRoles.stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                .map(role -> new SimpleGrantedAuthority(ROLE_PREFIX + role))
                 .collect(Collectors.toSet());
     }
 

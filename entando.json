@@ -3,7 +3,7 @@
         {
             "name": "expense-management",
             "stack": "spring-boot",
-             "healthCheckPath": "/actuator/health",
+            "healthCheckPath": "/actuator/health",
             "dbms": "postgresql",
             "commands": {
                 "run": "mvn spring-boot:run -Dspring-boot.run.profiles=dev",

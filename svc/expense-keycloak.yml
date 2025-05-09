@@ -2,7 +2,8 @@
 version: '3.7'
 services:
   expense-keycloak:
-    image: entando/entando-keycloak:7.2.0
+    image: entando/entando-keycloak:7.2.0-ENGPM-540-rc1
+    user: "${UID}:${GID}"
     restart: always
     command: [
         '-b',
@@ -17,7 +18,6 @@ services:
       ]
     volumes:
       - ./keycloak/realm-config:/opt/jboss/keycloak/realm-config
-      #- ./keycloak/temp:/opt/jboss/keycloak/realm-config
       - ./keycloak/keycloak-db:/opt/jboss/keycloak/standalone/data
     environment:
       - KEYCLOAK_USER=admin
