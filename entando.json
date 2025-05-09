@@ -3,7 +3,7 @@
         {
             "name": "expense-management",
             "stack": "spring-boot",
-             "healthCheckPath": "/actuator/health",
+            "healthCheckPath": "/actuator/health",
             "dbms": "postgresql",
             "commands": {
                 "run": "mvn spring-boot:run -Dspring-boot.run.profiles=dev",
@@ -15,13 +15,54 @@
             ]
         }
     ],
-    "microfrontends": [],
+    "microfrontends": [
+        {
+            "name": "expense-form",
+            "customElement": "expense-form",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "buildFolder": "dist/expense-form",
+            "titles": {
+                "en": "expense-form",
+                "it": "expense-form"
+            },
+            "apiClaims": [
+                {
+                    "name": "expense-api",
+                    "type": "internal",
+                    "serviceName": "expense-management"
+                }
+            ]
+        },
+        {
+            "name": "expense-list",
+            "customElement": "expense-list",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "buildFolder": "dist/expense-list",
+            "titles": {
+                "en": "expense-list",
+                "it": "expense-list"
+            },
+            "apiClaims": [
+                {
+                    "name": "expense-api",
+                    "type": "internal",
+                    "serviceName": "expense-management"
+                }
+            ]
+        }
+    ],
     "svc": [
         "expense-postgresql",
         "expense-keycloak"
     ],
     "name": "expense-bundle",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "expense-bundle description",
     "type": "bundle"
 }

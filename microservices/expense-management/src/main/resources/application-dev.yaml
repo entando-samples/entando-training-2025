@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -23,4 +23,4 @@ springdoc:
 
 # CORS Configurations
 app:
-  allowed-api-origin: http://localhost:3000,http://localhost:4200,http://localhost:5173
+  allowed-api-origin: http://localhost:4200,http://localhost:4201

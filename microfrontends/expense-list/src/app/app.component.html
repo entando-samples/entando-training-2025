@@ -1,0 +1,33 @@
+<table class="table table-striped border">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>expense</th>
+      <th>date</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (expense of expenses; track expense.id) {
+      <tr>
+        <td>{{ expense.title }}</td>
+        <td>{{ expense.expense | currency : 'EUR' }}</td>
+        <td>{{ expense.date | date: 'dd/MM/YYYY' }}</td>
+        <td>
+          @if (!expense.status) {
+            <button class="btn btn-success" (click)="approve(expense.id!)">Approve</button>
+            <button class="btn btn-danger" (click)="deny(expense.id!)">Deny</button>
+          } @else if (expense.status === 'APPROVED') {
+            <span class="badge bg-success">Approved</span>
+          } @else if (expense.status === 'DENIED') {
+            <span class="badge bg-danger">Denied</span>
+          }          
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="3" class="text-center">No expenses found</td>
+      </tr>
+    }
+  </tbody>
+</table>

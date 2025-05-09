@@ -24,13 +24,13 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI:http://localhost:8081/auth/realms/entando-development}
+          issuer-uri: ${SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI:http://localhost:9080/auth/realms/agenda}
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 
 jwt:
   auth:
     converter:
-      resource-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID:entando-core}
+      resource-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID:internal}
       principal-attribute: preferred_username
 
 logging:
@@ -46,8 +46,8 @@ springdoc:
       client-secret:
       use-pkce-with-authorization-code-grant: true
   oauth-flow:
-    authorizationUrl: ${KEYCLOAK_AUTH_URL:http://localhost:8081/auth}/realms/${KEYCLOAK_REALM:entando-development}/protocol/openid-connect/auth
-    tokenUrl: ${KEYCLOAK_AUTH_URL:http://localhost:8081/auth}/realms/${KEYCLOAK_REALM:entando-development}/protocol/openid-connect/token
+    authorizationUrl: ${KEYCLOAK_AUTH_URL:http://localhost:9080/auth}/realms/${KEYCLOAK_REALM:internal}/protocol/openid-connect/auth
+    tokenUrl: ${KEYCLOAK_AUTH_URL:http://localhost:9080/auth}/realms/${KEYCLOAK_REALM:internal}/protocol/openid-connect/token
 
 
 # CORS Configurations

@@ -1,0 +1,9 @@
+{
+    "systemParams": {
+        "api": {
+            "expense-api": {
+                "url": "http://localhost:8081"
+            }
+        }
+    }
+}
