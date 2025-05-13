@@ -1,6 +1,20 @@
 {
     "microservices": [],
-    "microfrontends": [],
+    "microfrontends": [
+        {
+            "name": "expense-form",
+            "customElement": "expense-form",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "expense-form",
+                "it": "expense-form"
+            },
+            "buildFolder": "dist"
+        }
+    ],
     "svc": [],
     "name": "expense-bundle",
     "version": "0.0.1",
