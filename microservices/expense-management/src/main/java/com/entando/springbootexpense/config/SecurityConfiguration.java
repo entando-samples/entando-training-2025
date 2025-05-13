@@ -30,15 +30,14 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.OPTIONS, EXPENSE_BUNDLE_API).permitAll()
                         .requestMatchers(HttpMethod.GET, EXPENSE_BUNDLE_API).permitAll()
+                        .requestMatchers(HttpMethod.PATCH, EXPENSE_BUNDLE_API).permitAll()
+                        .requestMatchers(HttpMethod.POST, EXPENSE_BUNDLE_API).permitAll()
                         .requestMatchers(EXPENSE_BUNDLE_API).authenticated()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated())
-                .oauth2ResourceServer(oauth2 ->
-                        oauth2.jwt(jwt ->
-                                jwt.jwtAuthenticationConverter(jwtAuthConverter)))
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();

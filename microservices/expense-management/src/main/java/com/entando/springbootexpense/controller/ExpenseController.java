@@ -64,7 +64,6 @@ public class ExpenseController {
 
 
     @PostMapping("/expenses")
-    @PreAuthorize("hasAuthority('expense-admin')")
     @SecurityRequirement(name = "expense-admin")
     public ResponseEntity<ExpenseRecord> createExpense(@RequestBody ExpenseRecord expense) throws URISyntaxException {
         log.debug("REST request to create a NEW expense: {}", expense);
@@ -77,7 +76,6 @@ public class ExpenseController {
     }
 
     @PatchMapping("/expenses/{id}/{status}")
-    @PreAuthorize("hasAuthority('expense-admin')")
     @SecurityRequirement(name = "expense-admin")
     public ResponseEntity<ExpenseRecord> updateStatus(@PathVariable Long id, @PathVariable ExpenseStatus status) {
         log.debug("REST request to update expense: {} status to {}", id, status);
