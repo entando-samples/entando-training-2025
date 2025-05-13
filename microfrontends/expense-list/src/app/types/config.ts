@@ -10,5 +10,8 @@ export interface EntandoConfig {
             url: string;
         }
     }
+  },
+  params: {
+    role: 'admin' | 'user';
   }
 }

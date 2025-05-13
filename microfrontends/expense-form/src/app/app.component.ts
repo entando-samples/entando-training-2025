@@ -15,7 +15,7 @@ import {
 import { ExpenseService } from './services/expense.service';
 import { Expense } from './types/expense';
 import { EntandoConfig } from './types/config';
-import { CommonModule } from '@angular/common';
+import { mediatorInstance } from '@entando/mfecommunication';
 
 interface ExpenseForm {
   title: FormControl<string>;
@@ -52,12 +52,9 @@ export class AppComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log('Config received:', this.config);
     this.parsedConfig = JSON.parse(this.config) as EntandoConfig;
-    console.log('Parsed config:', this.parsedConfig);
     this.expenseService.baseUrl =
       this.parsedConfig.systemParams.api['expense-api'].url;
-
   }
 
   onSubmit() {
@@ -68,7 +65,8 @@ export class AppComponent implements OnInit {
     };
 
     this.expenseService.addNewExpense(data).subscribe((res) => {
-      console.log('Expense created successfully', res);
+      mediatorInstance.publish('update-expenses-table')
+      this.expenseForm.reset();
     });
   }
 }

@@ -23,7 +23,7 @@
             "type": "widget",
             "group": "free",
             "publicFolder": "public",
-            "buildFolder": "dist/expense-form",
+            "buildFolder": "dist",
             "titles": {
                 "en": "expense-form",
                 "it": "expense-form"
@@ -43,7 +43,7 @@
             "type": "widget",
             "group": "free",
             "publicFolder": "public",
-            "buildFolder": "dist/expense-list",
+            "buildFolder": "dist",
             "titles": {
                 "en": "expense-list",
                 "it": "expense-list"
@@ -54,7 +54,23 @@
                     "type": "internal",
                     "serviceName": "expense-management"
                 }
+            ],
+            "configMfe": "expense-list-config",
+            "params": [
+                 {
+                    "name": "role",
+                    "description": "The role of the user"
+                }
             ]
+        },
+        {
+            "name": "expense-list-config",
+            "customElement": "expense-list-config",
+            "stack": "angular",
+            "buildFolder": "dist",
+            "type": "widget-config",
+            "group": "free",
+            "publicFolder": "public"
         }
     ],
     "svc": [
@@ -62,7 +78,7 @@
         "expense-keycloak"
     ],
     "name": "expense-bundle",
-    "version": "0.0.3",
+    "version": "0.0.6",
     "description": "expense-bundle description",
     "type": "bundle"
 }

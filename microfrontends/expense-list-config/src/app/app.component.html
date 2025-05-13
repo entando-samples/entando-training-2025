@@ -1,0 +1,12 @@
+<div class="card">
+  <form [formGroup]="configForm" class="card-body">
+    <div class="mb-3">
+      <label for="Role" class="form-label">Role</label>
+      <select id="role" name="role" class="form-select" formControlName="role">
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+        <option value="guest">Guest</option>
+      </select>
+    </div>
+  </form>
+</div>

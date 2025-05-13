@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "expense-form": {
+    "expense-list-config": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,10 +13,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "customWebpackConfig": {
-              "path": "webpack.config.js"
-            },
-            "outputPath": "dist/expense-form",
+            "outputPath": "dist/expense-list-config",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -26,12 +23,16 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "./"
               }
             ],
             "styles": [
               "src/styles.css"
             ],
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            },
             "scripts": []
           },
           "configurations": {
@@ -44,8 +45,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "800kB",
-                  "maximumError": "800kB"
+                  "maximumWarning": "500kB",
+                  "maximumError": "500kB"
                 }
               ],
               "outputHashing": "all"
@@ -60,12 +61,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4202
+          },
           "configurations": {
             "production": {
-              "buildTarget": "expense-form:build:production"
+              "buildTarget": "expense-list-config:build:production"
             },
             "development": {
-              "buildTarget": "expense-form:build:development"
+              "buildTarget": "expense-list-config:build:development"
             }
           },
           "defaultConfiguration": "development"

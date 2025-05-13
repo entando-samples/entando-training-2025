@@ -4,7 +4,9 @@
       <th>title</th>
       <th>expense</th>
       <th>date</th>
-      <th>actions</th>
+      @if (parsedConfig.params.role === 'admin') {
+        <th>actions</th>
+      }
     </tr>
   </thead>
   <tbody>
@@ -13,6 +15,7 @@
         <td>{{ expense.title }}</td>
         <td>{{ expense.expense | currency : 'EUR' }}</td>
         <td>{{ expense.date | date: 'dd/MM/YYYY' }}</td>
+        @if (parsedConfig.params.role === 'admin') {
         <td>
           @if (!expense.status) {
             <button class="btn btn-success" (click)="approve(expense.id!)">Approve</button>
@@ -22,7 +25,7 @@
           } @else if (expense.status === 'DENIED') {
             <span class="badge bg-danger">Denied</span>
           }          
-        </td>
+        </td>}
       </tr>
     } @empty {
       <tr>
