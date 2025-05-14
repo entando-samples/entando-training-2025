@@ -13,6 +13,19 @@
                 "it": "expense-form"
             },
             "buildFolder": "dist"
+        },
+        {
+            "name": "expense-list",
+            "customElement": "expense-list",
+            "stack": "angular",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "expense-list",
+                "it": "expense-list"
+            },
+            "buildFolder": "dist"
         }
     ],
     "svc": [],
