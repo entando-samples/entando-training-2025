@@ -57,7 +57,7 @@
             ],
             "configMfe": "expense-list-config",
             "params": [
-                 {
+                {
                     "name": "role",
                     "description": "The role of the user"
                 }
@@ -71,6 +71,27 @@
             "type": "widget-config",
             "group": "free",
             "publicFolder": "public"
+        },
+        {
+            "name": "angular-epc",
+            "customElement": "angular-epc",
+            "stack": "angular",
+            "type": "app-builder",
+            "slot": "content",
+            "group": "free",
+            "publicFolder": "public",
+            "paths": ["angular-epc"],
+            "nav": [
+                {
+                    "label": {
+                        "en": "YOUR ANGULAR EPC",
+                        "it": "LA TUA EPC ANGULAR"
+                    },
+                    "target": "internal", 
+                    "url": "/angular-epc"
+                }
+            ],
+            "buildFolder": "dist"
         }
     ],
     "svc": [
@@ -78,7 +99,7 @@
         "expense-keycloak"
     ],
     "name": "expense-bundle",
-    "version": "0.0.6",
+    "version": "0.0.10",
     "description": "expense-bundle description",
     "type": "bundle"
 }
